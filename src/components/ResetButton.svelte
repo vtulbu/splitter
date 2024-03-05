@@ -43,4 +43,10 @@
 		cursor: pointer;
 		background-color: #9fe8df;
 	}
+
+	@media (min-width: 1440px) {
+		button {
+			margin-top: auto;
+		}
+	}
 </style>

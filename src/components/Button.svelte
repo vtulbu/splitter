@@ -51,6 +51,8 @@
 
 	button:hover {
 		cursor: pointer;
+		background-color: #9fe8df;
+		color: #00474b;
 	}
 
 	.active {

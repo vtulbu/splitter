@@ -49,6 +49,7 @@
 		height: 48px;
 		background: var(--url) no-repeat scroll 20px 16px;
 		text-align: right;
+		padding-right: 16px;
 	}
 
 	input:hover {

@@ -1,17 +1,33 @@
 <script>
 	import 'normalize.css';
+	import { flip } from 'svelte/animate';
+	import { fade, scale, slide, fly } from 'svelte/transition';
+
+	import { onMount } from 'svelte';
+
+	let ready = false;
+	onMount(() => (ready = true));
 </script>
 
 <main>
-	<h1>Splitter</h1>
-	<div>
-		<slot />
-	</div>
+	{#if ready}
+		<h1 transition:fade>Splitter</h1>
+	{/if}
+
+	{#if ready}
+		<div transition:fly={{ y: 900, duration: 900 }}>
+			<slot />
+		</div>
+	{/if}
 </main>
 
 <style>
 	:global(body) {
 		font-family: 'Space Mono', monospace;
+	}
+
+	:global(*, *::before, *::after) {
+		box-sizing: border-box;
 	}
 
 	:global(p) {
@@ -20,7 +36,7 @@
 
 	main {
 		background-color: #c5e4e7;
-		height: calc(100vh - 50px);
+		height: 100vh;
 		padding-top: 50px;
 		display: flex;
 		flex-direction: column;
@@ -52,9 +68,14 @@
 
 	@media (min-width: 1440px) {
 		main {
-			padding: 160px 260px 240px 260px;
+			padding: 80px 260px 240px 260px;
 			max-height: 1024px;
-			height: calc(100vh - 400px);
+			height: 100vh;
+			align-items: center;
+		}
+
+		h1 {
+			margin-bottom: 90px;
 		}
 
 		div {
@@ -64,6 +85,12 @@
 			-webkit-box-shadow: 0px 0px 43px 0px rgba(79, 166, 175, 0.2);
 			-moz-box-shadow: 0px 0px 43px 0px rgba(79, 166, 175, 0.2);
 			box-shadow: 0px 0px 43px 0px rgba(79, 166, 175, 0.2);
+			max-width: 1020px;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 100px 250px 100px;
+			column-gap: 48px;
+			row-gap: 40px;
 		}
 	}
 </style>

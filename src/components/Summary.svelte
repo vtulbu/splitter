@@ -10,7 +10,15 @@
 <div>
 	<InfoSummary>
 		<p slot="title">Tip Amount</p>
-		<p slot="value">
+		<p
+			slot="value"
+			title={tipAmount.toLocaleString('en-US', {
+				style: 'currency',
+				currency: 'USD',
+				minimumFractionDigits: 2,
+				maximumFractionDigits: 2
+			})}
+		>
 			{tipAmount.toLocaleString('en-US', {
 				style: 'currency',
 				currency: 'USD',
@@ -22,7 +30,15 @@
 
 	<InfoSummary>
 		<p slot="title">Total</p>
-		<p slot="value">
+		<p
+			slot="value"
+			title={total.toLocaleString('en-US', {
+				style: 'currency',
+				currency: 'USD',
+				minimumFractionDigits: 2,
+				maximumFractionDigits: 2
+			})}
+		>
 			{total.toLocaleString('en-US', {
 				style: 'currency',
 				currency: 'USD',
@@ -42,6 +58,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 24px;
+		grid-row: 1/4;
 	}
 
 	p:last-of-type {
@@ -51,6 +68,11 @@
 		letter-spacing: 0.67px;
 		margin-left: auto;
 		font-weight: 700;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		width: 200px;
+		text-align: right;
 	}
 
 	p:first-of-type {
@@ -58,5 +80,15 @@
 		font-size: 16px;
 		font-weight: 700;
 		margin: 0;
+	}
+
+	@media (min-width: 1440px) {
+		div {
+			padding: 40px;
+		}
+		p:last-of-type {
+			font-size: 48px;
+			width: 260px;
+		}
 	}
 </style>
