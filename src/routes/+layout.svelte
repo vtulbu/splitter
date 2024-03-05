@@ -14,6 +14,10 @@
 		font-family: 'Space Mono', monospace;
 	}
 
+	:global(p) {
+		margin: 0;
+	}
+
 	main {
 		background-color: #c5e4e7;
 		height: calc(100vh - 50px);
