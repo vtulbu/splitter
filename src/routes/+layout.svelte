@@ -45,6 +45,9 @@
 		padding: 32px;
 		border-radius: 25px 25px 0 0;
 		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
 	}
 
 	@media (min-width: 1440px) {
