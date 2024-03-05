@@ -16,11 +16,12 @@
 
 	main {
 		background-color: #c5e4e7;
+		height: calc(100vh - 50px);
 		padding-top: 50px;
 		display: flex;
 		flex-direction: column;
 		min-width: 375px;
-		min-height: 935px;
+		min-height: 700px;
 	}
 
 	h1 {
@@ -46,6 +47,7 @@
 		main {
 			padding: 160px 260px 240px 260px;
 			max-height: 1024px;
+			height: calc(100vh - 400px);
 		}
 
 		div {
