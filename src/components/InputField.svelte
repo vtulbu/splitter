@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { createEventDispatcher } from 'svelte';
+	import type { FormEventHandler } from 'svelte/elements';
 
 	let value = '';
 	let error = false;
@@ -12,7 +13,7 @@
 		dispatch('input', value);
 	});
 
-	function handleChange(event: InputEvent) {
+	const handleChange: FormEventHandler<HTMLInputElement> = (event) => {
 		const { value: val } = event.target as HTMLInputElement;
 
 		const changeValue = (regex: RegExp) => {
@@ -31,7 +32,7 @@
 			const regex = /^[0-9]*\.?[0-9]*$/;
 			changeValue(regex);
 		}
-	}
+	};
 </script>
 
 <input type="text" on:input={handleChange} class:error />

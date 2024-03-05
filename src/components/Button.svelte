@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { EventHandler, MouseEventHandler } from 'svelte/elements';
+	import type { MouseEventHandler } from 'svelte/elements';
 	import { tip } from '../stores';
 
 	let button: HTMLButtonElement;
