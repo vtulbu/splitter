@@ -3,7 +3,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import type { FormEventHandler } from 'svelte/elements';
 
-	let value = '';
+	export let value = '';
 	let error = false;
 	export let type: 'integer' | undefined = undefined;
 
@@ -35,7 +35,7 @@
 	};
 </script>
 
-<input type="text" on:input={handleChange} class:error />
+<input type="text" on:input={handleChange} class:error bind:value />
 
 <style>
 	input {

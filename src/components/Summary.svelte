@@ -1,18 +1,35 @@
 <script lang="ts">
-	import Button from './Button.svelte';
 	import InfoSummary from './InfoSummary.svelte';
 	import ResetButton from './ResetButton.svelte';
+	import { tip, bill, people } from '../stores';
+
+	$: tipAmount = (($bill || 0) * ($tip || 0)) / 100 / ($people || 1) || 0;
+	$: total = ($bill || 0) / ($people || 1) + tipAmount || 0;
 </script>
 
 <div>
 	<InfoSummary>
 		<p slot="title">Tip Amount</p>
-		<p slot="value">$0.00</p>
+		<p slot="value">
+			{tipAmount.toLocaleString('en-US', {
+				style: 'currency',
+				currency: 'USD',
+				minimumFractionDigits: 2,
+				maximumFractionDigits: 2
+			})}
+		</p>
 	</InfoSummary>
 
 	<InfoSummary>
 		<p slot="title">Total</p>
-		<p slot="value">$0.00</p>
+		<p slot="value">
+			{total.toLocaleString('en-US', {
+				style: 'currency',
+				currency: 'USD',
+				minimumFractionDigits: 2,
+				maximumFractionDigits: 2
+			})}
+		</p>
 	</InfoSummary>
 	<ResetButton />
 </div>
@@ -32,8 +49,7 @@
 		color: #26c2ae;
 		font-size: 32px;
 		letter-spacing: 0.67px;
-		text-align: center;
-		margin: auto;
+		margin-left: auto;
 		font-weight: 700;
 	}
 

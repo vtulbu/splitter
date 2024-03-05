@@ -1,9 +1,14 @@
 <script lang="ts">
 	import type { MouseEventHandler } from 'svelte/elements';
+	import { tip, bill, people } from '../stores';
 
 	let button: HTMLButtonElement;
 
 	const onClickBtn: MouseEventHandler<HTMLButtonElement> = (event) => {
+		tip.set(undefined);
+		bill.set(0);
+		people.set(0);
+
 		button.animate(
 			[
 				{

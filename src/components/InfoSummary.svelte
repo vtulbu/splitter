@@ -17,7 +17,7 @@
 
 	div {
 		display: grid;
-		grid-template-columns: 1fr 100px;
+		grid-template-columns: 1fr 0.2fr;
 		grid-template-rows: 1fr 1fr;
 		gap: 12px;
 	}

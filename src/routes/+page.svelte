@@ -3,11 +3,23 @@
 	import InputField from '../components/InputField.svelte';
 	import Label from '../components/Label.svelte';
 	import Summary from '../components/Summary.svelte';
+	import { bill, people } from '../stores';
+
+	let billValue = '';
+	let peopleValue = '';
+
+	$: bill.set(parseFloat(billValue));
+	$: people.set(parseInt(peopleValue));
+
+	$: {
+		billValue = ($bill || '').toString();
+		peopleValue = ($people || '').toString();
+	}
 </script>
 
 <div>
 	<Label>Bill</Label>
-	<InputField --url="url(/icon-dollar.svg)" />
+	<InputField --url="url(/icon-dollar.svg)" bind:value={billValue} />
 </div>
 <div>
 	<Label>Select Tip %</Label>
@@ -18,9 +30,6 @@
 
 <div>
 	<Label>Number of People</Label>
-	<InputField --url="url(/icon-person.svg)" type="integer" />
+	<InputField --url="url(/icon-person.svg)" type="integer" bind:value={peopleValue} />
 </div>
 <Summary />
-
-<style>
-</style>
